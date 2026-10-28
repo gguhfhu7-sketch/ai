@@ -1,6 +1,7 @@
-# Sam — Spine 2D Character Master Asset Sheet
+# Sam — Spine 2D Character Master Asset Sheet + 3D Head
 
-Game-ready 2D character concept asset sheet for **Spine 2D / Live2D rigging**.
+Game-ready 2D character concept asset sheet for **Spine 2D / Live2D rigging**
+**plus a low-poly rigged 3D head (FBX)**.
 Character: **Sam**, a 14-year-old Iranian teenage boy.
 
 ![Master Sheet](sam-spine-asset-sheet/00_master_sheet_full.png)
@@ -30,6 +31,46 @@ Character: **Sam**, a 14-year-old Iranian teenage boy.
 | `01_turnaround_Apose.png` | Full-body A-pose turnaround — front / 3/4 / side / back, rig-ready | 1344×768 |
 | `02_expression_grid.png` | Facial expression grid + lip-sync visemes (A / E / O / M) | 1024×1024 |
 | `03_keyframe_poses.png` | Keyframe poses — idle / walk / run / jump / Word-Spear throw | 1344×768 |
+
+## 3D Low-Poly Rigged Head (FBX)
+
+Folder: `sam-3d/`
+
+| File | Content |
+|------|---------|
+| `Sam_Head_LowPoly_Rigged.fbx` | Rigged low-poly head/bust — ready for Unity / Unreal / Godot |
+| `Sam_Head_LowPoly.blend` | Blender 4.2 source file (edit mesh, rig, materials) |
+| `preview_front3q.png` | 3/4 view preview render |
+| `preview_side.png` | Side view preview render |
+
+**Specs**
+
+- ~2,064 triangles / 1,112 verts — true low-poly game budget
+- Stylized flat-shaded look matching the 2D concept
+- Iranian teen likeness: olive skin, dark curly hair, thick brows,
+  almond dark-brown eyes, cheek bandage, navy hoodie collar + bag strap
+- Real scale (head ~0.23 m), +Y forward, Z-up (FBX converted for engines)
+- Materials: plain Principled BSDF colors (no textures needed)
+
+**Rig — 6 bones**
+
+| Bone | Controls |
+|------|----------|
+| `root` | chest / hoodie base (turn, lean) |
+| `neck` | neck rotate |
+| `head` | head rotate/nod |
+| `jaw` | jaw open (mouth) |
+| `eye.L` / `eye.R` | eye look-at / blink pivots |
+
+All bones are weight-painted (deterministic vertex groups, no auto-weight
+artifacts). Parent hierarchy: `root → neck → head → {jaw, eye.L, eye.R}`.
+
+**Import tips**
+
+- *Unity:* drop the FBX into `Assets/`, set `Scale Factor = 1`,
+  `Extract Materials` optional.
+- *Unreal:* import, enable `Import Mesh` + `Import Skeleton`; scale is metric.
+- *Godot:* import as scene, the Armature node appears ready to animate.
 
 ## Layout — Three-Part Sheet
 
@@ -69,4 +110,8 @@ Character: **Sam**, a 14-year-old Iranian teenage boy.
   - `01_turnaround_Apose.png` — ترن‌اراند A-pose چهار نمایه (ریگ‌آماده)
   - `02_expression_grid.png` — گرید حالات چهره و ویزیم‌های A/E/O/M
   - `03_keyframe_poses.png` — پوزهای کلیدی: idle / walk / run / jump / پرتاب Word Spear
+- **مدل سه‌بعدی (پوشه `sam-3d/`):** سر/نیم‌تنه Low-Poly ریگ‌شده — فرمت FBX برای یونیتی/آنریل/گودو + فایل سورس Blender
+  - حدود ۲۰۰۰ مثلث، سبک فلت‌شد Low-Poly هماهنگ با کانسپت دوبعدی
+  - چهره ایرانی نوجوان: پوست زیتونی، موی فرفری تیره، ابروی پرپشت، چشم بادامی قهوه‌ای، چسب زخم گونه، یقه هودی سرمه‌ای و بند کیف
+  - ۶ استخوان: root / neck / head / jaw / eye.L / eye.R با وزن‌دهی دستی
 - **نکتهٔ ریکینگ:** قبل از بایند، تصویر را به لایه‌های جداگانه (سر، مو، تنه، بازو/ساعد، لگن، ران/ساق، کفش، کیف، هود) برش دهید و خطوط را تمیز کنید.
